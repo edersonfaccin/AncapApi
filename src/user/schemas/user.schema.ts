@@ -24,6 +24,9 @@ export class User {
     @Prop({ })
     coins: ICoin[]
 
+    @Prop({ required: true, default: new Date(1900, 0, 1) })
+    birth_date: Date
+
     @Prop({ required: true, default: Date.now() })
     date_register: Date
 }

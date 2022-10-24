@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
 import { Supplier } from './schemas/supplier.schema';
 import { SupplierService } from './supplier.service';
 
@@ -23,7 +23,7 @@ export class SupplierController {
         return this.supplierService.create(supplier)
     }
 
-    @Put(':id')
+    @Patch(':id')
     async update(@Param('id') id: string, @Body() supplier: Supplier): Promise<Supplier> {
         return this.supplierService.update(id, supplier)
     }
