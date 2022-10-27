@@ -1,15 +1,15 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import mongoose, { Document } from 'mongoose';
 import { ICoin } from 'src/utils/Interfaces';
 
 export type UserDocument = User & Document;
-
 @ObjectType()
 @Schema()
 export class User {
-    @Field(() => ID,{ nullable: true })
-    _id: string;
+
+    @Field((type) => ID, { nullable: true })
+    _id: mongoose.Types.ObjectId;
 
     @Prop({ required: true })
     @Field(() => String,{ nullable: false })
@@ -28,11 +28,11 @@ export class User {
     latitude: number;
 
     @Prop({ required: true, default: 0 })
-    @Field(() => String,{ nullable: false })
+    @Field(() => String, { nullable: false })
     longitude: number;
 
     @Prop({ })
-    @Field(() => ICoin[],{ nullable: true })
+    @Field(() => [Object], { nullable: true })
     coins: ICoin[]
 
     @Prop({ required: true, default: new Date(1900, 0, 1) })

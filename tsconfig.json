@@ -13,9 +13,14 @@
     "incremental": true,
     "skipLibCheck": true,
     "strictNullChecks": false,
+    "esModuleInterop": true,
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false
-  }
+  },
+  "exclude": [
+    "node_modules", 
+    "dist"
+  ]
 }

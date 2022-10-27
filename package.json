@@ -19,7 +19,8 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "create:module": "nest g module order && nest g controller order && nest g provider order/order.service && nest g class order/schemas/order.schema"
+    "create:module-graph": "nest g module order && nest g controller order && nest g provider order/order.service && nest g class order/schemas/order.schema && nest g r order && touch src/order/order.input.ts && touch src/order/order.providers.ts",
+    "create:module": "nest g module coin && nest g controller coin && nest g provider coin/coin.service && nest g class coin/schemas/coin.schema"
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",
@@ -27,10 +28,12 @@
     "@nestjs/graphql": "^10.1.5",
     "@nestjs/mongoose": "^9.2.0",
     "@nestjs/platform-express": "^9.0.0",
+    "apollo-server-express": "^3.10.3",
     "dotenv": "^16.0.3",
     "graphql": "^16.6.0",
     "graphql-tools": "^8.3.7",
     "mongoose": "^6.6.7",
+    "mongoose-autopopulate": "^0.16.1",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0"
