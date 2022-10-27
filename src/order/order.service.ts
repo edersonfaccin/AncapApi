@@ -5,29 +5,29 @@ import { Order } from './schemas/order.schema';
 
 @Injectable()
 export class OrderService {
-    constructor(@InjectModel('Order') private readonly orderModel: Model<Order>){ }
+    constructor(@InjectModel('Order') private readonly model: Model<Order>){ }
 
     async getAll() {
-        return await this.orderModel.find().exec()
+        return await this.model.find().exec()
     }
 
     async getById(id: string) {
-        return await this.orderModel.findById(id).exec()
+        return await this.model.findById(id).exec()
     }
 
     async create(order: Order) {
-        const createdorder = new this.orderModel(order)
+        const createdorder = new this.model(order)
 
         return await createdorder.save()
     }
 
     async update(id: string, order: Order) {
-        await this.orderModel.updateOne({ _id: id }, order).exec()
+        await this.model.updateOne({ _id: id }, order).exec()
 
         return this.getById(id)
     }
 
     async delete(id: string) {
-        return await this.orderModel.deleteOne({ _id: id }).exec()
+        return await this.model.deleteOne({ _id: id }).exec()
     }
 }

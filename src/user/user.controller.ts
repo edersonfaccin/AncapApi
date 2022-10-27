@@ -5,31 +5,31 @@ import { UserService } from './user.service';
 @Controller('user')
 export class UserController {
 
-    constructor(private userService: UserService){
+    constructor(private service: UserService){
     }
 
     @Get()
     async getAll() : Promise<User[]>{
-        return this.userService.getAll()
+        return this.service.getAll()
     }
 
     @Get(':id')
     async getById(@Param('id') id: string) : Promise<User>{
-        return this.userService.getById(id)
+        return this.service.getById(id)
     }
 
     @Post()
-    async create(@Body() user: User): Promise<User> {
-        return this.userService.create(user)
+    async create(@Body() data: User): Promise<User> {
+        return this.service.create(data)
     }
 
     @Patch(':id')
-    async update(@Param('id') id: string, @Body() user: User): Promise<User> {
-        return this.userService.update(id, user)
+    async update(@Param('id') id: string, @Body() data: User): Promise<User> {
+        return this.service.update(id, data)
     }
 
     @Delete(':id')
     async delete(@Param('id') id: string) {
-        this.userService.delete(id)
+        this.service.delete(id)
     }
 }

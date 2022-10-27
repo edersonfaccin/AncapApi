@@ -5,29 +5,29 @@ import { Supplier } from './schemas/supplier.schema';
 
 @Injectable()
 export class SupplierService {
-    constructor(@InjectModel('Supplier') private readonly supplierModel: Model<Supplier>){ }
+    constructor(@InjectModel('Supplier') private readonly model: Model<Supplier>){ }
 
     async getAll() {
-        return await this.supplierModel.find().exec()
+        return await this.model.find().exec()
     }
 
     async getById(id: string) {
-        return await this.supplierModel.findById(id).exec()
+        return await this.model.findById(id).exec()
     }
 
     async create(supplier: Supplier) {
-        const createdsupplier = new this.supplierModel(supplier)
+        const createdsupplier = new this.model(supplier)
 
         return await createdsupplier.save()
     }
 
     async update(id: string, supplier: Supplier) {
-        await this.supplierModel.updateOne({ _id: id }, supplier).exec()
+        await this.model.updateOne({ _id: id }, supplier).exec()
 
         return this.getById(id)
     }
 
     async delete(id: string) {
-        return await this.supplierModel.deleteOne({ _id: id }).exec()
+        return await this.model.deleteOne({ _id: id }).exec()
     }
 }

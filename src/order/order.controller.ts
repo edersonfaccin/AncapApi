@@ -5,31 +5,31 @@ import { Order } from './schemas/order.schema';
 @Controller('order')
 export class OrderController {
 
-    constructor(private orderService: OrderService){
+    constructor(private service: OrderService){
     }
 
     @Get()
     async getAll() : Promise<Order[]>{
-        return this.orderService.getAll()
+        return this.service.getAll()
     }
 
     @Get(':id')
     async getById(@Param('id') id: string) : Promise<Order>{
-        return this.orderService.getById(id)
+        return this.service.getById(id)
     }
 
     @Post()
-    async create(@Body() order: Order): Promise<Order> {
-        return this.orderService.create(order)
+    async create(@Body() data: Order): Promise<Order> {
+        return this.service.create(data)
     }
 
     @Patch(':id')
-    async update(@Param('id') id: string, @Body() order: Order): Promise<Order> {
-        return this.orderService.update(id, order)
+    async update(@Param('id') id: string, @Body() data: Order): Promise<Order> {
+        return this.service.update(id, data)
     }
 
     @Delete(':id')
     async delete(@Param('id') id: string) {
-        this.orderService.delete(id)
+        this.service.delete(id)
     }
 }

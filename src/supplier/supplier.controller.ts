@@ -5,31 +5,31 @@ import { SupplierService } from './supplier.service';
 @Controller('supplier')
 export class SupplierController {
 
-    constructor(private supplierService: SupplierService){
+    constructor(private service: SupplierService){
     }
 
     @Get()
     async getAll() : Promise<Supplier[]>{
-        return this.supplierService.getAll()
+        return this.service.getAll()
     }
 
     @Get(':id')
     async getById(@Param('id') id: string) : Promise<Supplier>{
-        return this.supplierService.getById(id)
+        return this.service.getById(id)
     }
 
     @Post()
-    async create(@Body() supplier: Supplier): Promise<Supplier> {
-        return this.supplierService.create(supplier)
+    async create(@Body() data: Supplier): Promise<Supplier> {
+        return this.service.create(data)
     }
 
     @Patch(':id')
-    async update(@Param('id') id: string, @Body() supplier: Supplier): Promise<Supplier> {
-        return this.supplierService.update(id, supplier)
+    async update(@Param('id') id: string, @Body() data: Supplier): Promise<Supplier> {
+        return this.service.update(id, data)
     }
 
     @Delete(':id')
     async delete(@Param('id') id: string) {
-        this.supplierService.delete(id)
+        this.service.delete(id)
     }
 }

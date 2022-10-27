@@ -1,6 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, SchemaTypes, Types } from 'mongoose';
-import { Supplier } from 'src/supplier/schemas/supplier.schema';
 import { EOrderStatus } from 'src/utils/Enums';
 import { IServiceType } from 'src/utils/Interfaces';
 
@@ -26,10 +25,10 @@ export class Order {
     @Prop({ })
     services: IServiceType[]
 
-    @Prop({ type: [SchemaTypes.ObjectId], ref: Supplier.name })
+    @Prop({ type: [SchemaTypes.ObjectId], ref: 'Supplier' })
     supply_candidates: Types.ObjectId[];
 
-    @Prop({ type: SchemaTypes.ObjectId, ref: Supplier.name })
+    @Prop({ type: SchemaTypes.ObjectId, ref: 'Supplier' })
     supply_winner: Types.ObjectId;
 
     @Prop({ required: true, default: EOrderStatus.Opened })
