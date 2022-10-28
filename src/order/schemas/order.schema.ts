@@ -1,7 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, SchemaTypes, Types } from 'mongoose';
-import { EOrderStatus } from 'src/utils/Enums';
-import { IServiceType } from 'src/utils/Interfaces';
+import { EOrderStatus } from 'src/common/utils/Enums';
+//import { IServiceType } from 'src/utils/Interfaces';
 
 export type OrderDocument = Order & Document;
 
@@ -22,8 +22,8 @@ export class Order {
     @Prop({ required: true, default: 0 })
     longitude: number;
 
-    @Prop({ })
-    services: IServiceType[]
+    /* @Prop({ })
+    services: IServiceType[] */
 
     @Prop({ type: [SchemaTypes.ObjectId], ref: 'Supplier' })
     supply_candidates: Types.ObjectId[];

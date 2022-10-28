@@ -54,6 +54,97 @@ type User {
   date_register: DateTime!
 }
 
+type SupplierCoin {
+  _id: String!
+
+  """Coin wallet id"""
+  idwallet: String!
+
+  """Coin notes"""
+  notes: String!
+
+  """Coin public address"""
+  public_address: String!
+
+  """Coin active"""
+  active: Boolean!
+
+  """Coin date register"""
+  date_register: DateTime!
+}
+
+type Product {
+  _id: String!
+
+  """Product name"""
+  name: String!
+
+  """Product notes"""
+  notes: String!
+
+  """Product value"""
+  value: Float!
+
+  """Product images"""
+  images: [String!]!
+
+  """Product active"""
+  active: Boolean!
+
+  """Product date register"""
+  date_register: DateTime!
+}
+
+type Service {
+  _id: String!
+
+  """Service name"""
+  name: String!
+
+  """Service notes"""
+  notes: String!
+
+  """Service value"""
+  value: Float!
+
+  """Service active"""
+  active: Boolean!
+
+  """Service date register"""
+  date_register: DateTime!
+}
+
+type Supplier {
+  _id: String!
+
+  """Supplier name"""
+  name: String!
+
+  """Supplier email"""
+  email: String!
+
+  """Supplier address"""
+  address: String!
+
+  """Supplier latitude"""
+  latitude: Float!
+
+  """Supplier longitude"""
+  longitude: Float!
+
+  """Supplier coins"""
+  coins: [SupplierCoin!]!
+
+  """Supplier services"""
+  services: [Service!]!
+
+  """Supplier products"""
+  products: [Product!]!
+
+  """Supplier date register"""
+  date_register: DateTime!
+}
+
 type Wallet {
   _id: String!
 
@@ -72,6 +163,9 @@ type Query {
   userspage(listUserInput: ListInput!): [User!]!
   users: [User!]!
   user(_id: String!): User!
+  supplierspage(listSupplierInput: ListInput!): [Supplier!]!
+  suppliers: [Supplier!]!
+  supplier(_id: String!): Supplier!
   walletspage(listWalletInput: ListInput!): [Wallet!]!
   wallets: [Wallet!]!
   wallet(_id: String!): Wallet!
@@ -89,6 +183,9 @@ type Mutation {
   createUser(data: CreateUserInput!): User!
   updateUser(data: UpdateUserInput!): User!
   removeUser(_id: String!): User!
+  createSupplier(data: CreateSupplierInput!): Supplier!
+  updateSupplier(data: UpdateSupplierInput!): Supplier!
+  removeSupplier(_id: String!): Supplier!
   createWallet(data: CreateWalletInput!): Wallet!
   updateWallet(data: UpdateWalletInput!): Wallet!
   removeWallet(_id: String!): Wallet!
@@ -111,7 +208,7 @@ input CreateUserInput {
   longitude: Float
 
   """User coins"""
-  coins: [CreateCoinInput!]
+  coins: [CreateUserCoinInput!]
 
   """User birth date"""
   birth_date: DateTime
@@ -120,7 +217,7 @@ input CreateUserInput {
   date_register: DateTime
 }
 
-input CreateCoinInput {
+input CreateUserCoinInput {
   """Coin idwallet"""
   idwallet: String!
 
@@ -154,12 +251,122 @@ input UpdateUserInput {
   longitude: Float
 
   """User coins"""
-  coins: [CreateCoinInput!]
+  coins: [CreateUserCoinInput!]
 
   """User birth date"""
   birth_date: DateTime
 
   """User date register"""
+  date_register: DateTime
+  _id: String!
+}
+
+input CreateSupplierInput {
+  """Supplier name"""
+  name: String!
+
+  """Supplier email"""
+  email: String!
+
+  """Supplier password"""
+  address: String!
+
+  """Supplier latitude"""
+  latitude: Float
+
+  """Supplier longitude"""
+  longitude: Float
+
+  """Supplier coins"""
+  coins: [CreateSupplierCoinInput!]
+
+  """Supplier services"""
+  services: [CreateServiceInput!]
+
+  """Supplier products"""
+  products: [CreateProductInput!]
+
+  """Supplier date register"""
+  date_register: DateTime
+}
+
+input CreateSupplierCoinInput {
+  """Coin idwallet"""
+  idwallet: String!
+
+  """Coin notes"""
+  notes: String
+
+  """Coin public_address"""
+  public_address: String!
+
+  """Coin active"""
+  active: Boolean
+
+  """Coin date register"""
+  date_register: DateTime
+}
+
+input CreateServiceInput {
+  """Service name"""
+  name: String!
+
+  """Service notes"""
+  notes: String
+
+  """Service value"""
+  value: Float
+
+  """Service active"""
+  active: Boolean
+
+  """Service date register"""
+  date_register: DateTime
+}
+
+input CreateProductInput {
+  """Product name"""
+  name: String!
+
+  """Product notes"""
+  notes: String
+
+  """Product value"""
+  value: Float
+
+  """Product active"""
+  active: Boolean
+
+  """Product date register"""
+  date_register: DateTime
+}
+
+input UpdateSupplierInput {
+  """Supplier name"""
+  name: String
+
+  """Supplier email"""
+  email: String
+
+  """Supplier password"""
+  address: String
+
+  """Supplier latitude"""
+  latitude: Float
+
+  """Supplier longitude"""
+  longitude: Float
+
+  """Supplier coins"""
+  coins: [CreateSupplierCoinInput!]
+
+  """Supplier services"""
+  services: [CreateServiceInput!]
+
+  """Supplier products"""
+  products: [CreateProductInput!]
+
+  """Supplier date register"""
   date_register: DateTime
   _id: String!
 }

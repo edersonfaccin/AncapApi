@@ -1,7 +1,7 @@
 import { InputType, Field } from '@nestjs/graphql';
 
 @InputType()
-export class CreateUserCoinInput {
+export class CreateSupplierCoinInput {
 
     @Field(() => String, { description: 'Coin idwallet' })
     idwallet: string;

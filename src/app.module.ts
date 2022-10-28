@@ -21,7 +21,7 @@ require('dotenv').config()
     }),
     UserModule,
     SupplierModule,
-    OrderModule,
+    //OrderModule,
     WalletModule
   ],
   controllers: [
