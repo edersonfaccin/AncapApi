@@ -7,6 +7,7 @@ export type WalletDocument = Wallet & Document;
 @Schema()
 @ObjectType()
 export class Wallet {
+    
     @Field(() => String)
     _id: MongooseSchema.Types.ObjectId;
 

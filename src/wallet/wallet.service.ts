@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose'
 import { CreateWalletInput } from './dto/create-wallet.input';
-import { ListWalletInput } from '../common/dto/list-wallet.input';
+import { ListInput } from '../common/dto/list.input';
 import { UpdateWalletInput } from './dto/update-wallet.input';
 import { Wallet } from './schemas/wallet.schema';
 
@@ -10,7 +10,7 @@ import { Wallet } from './schemas/wallet.schema';
 export class WalletService {
     constructor(@InjectModel('Wallet') private readonly model: Model<Wallet>){ }
 
-    async getAllPage(pagination: ListWalletInput) {
+    async getAllPage(pagination: ListInput) {
         const { limit, offset } = pagination;
 
         return await this.model.find().skip(offset).limit(limit).exec()

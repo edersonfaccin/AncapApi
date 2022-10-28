@@ -1,6 +1,6 @@
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { CreateWalletInput } from './dto/create-wallet.input';
-import { ListWalletInput } from '../common/dto/list-wallet.input';
+import { ListInput } from '../common/dto/list.input';
 import { UpdateWalletInput } from './dto/update-wallet.input';
 import { Wallet } from './schemas/wallet.schema';
 import { WalletService } from './wallet.service';
@@ -15,7 +15,7 @@ export class WalletResolver {
     }
 
     @Query(() => [Wallet], { name: 'walletspage' })
-    findAllPage(@Args('listWalletInput') listWalletInput: ListWalletInput) {
+    findAllPage(@Args('listWalletInput') listWalletInput: ListInput) {
         return this.service.getAllPage(listWalletInput);
     }
 

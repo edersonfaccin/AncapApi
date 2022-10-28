@@ -2,6 +2,58 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Coin {
+  _id: String!
+
+  """Coin wallet id"""
+  idwallet: String!
+
+  """Coin notes"""
+  notes: String!
+
+  """Coin public address"""
+  public_address: String!
+
+  """Coin active"""
+  active: Boolean!
+
+  """Coin date register"""
+  date_register: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type User {
+  _id: String!
+
+  """User name"""
+  name: String!
+
+  """User email"""
+  email: String!
+
+  """User password"""
+  password: String!
+
+  """User latitude"""
+  latitude: Float!
+
+  """User longitude"""
+  longitude: Float!
+
+  """User coins"""
+  coins: [Coin!]!
+
+  """User birth date"""
+  birth_date: DateTime!
+
+  """User date register"""
+  date_register: DateTime!
+}
+
 type Wallet {
   _id: String!
 
@@ -17,12 +69,15 @@ type Wallet {
 
 type Query {
   getHello: String!
-  walletspage(listWalletInput: ListWalletInput!): [Wallet!]!
+  userspage(listUserInput: ListInput!): [User!]!
+  users: [User!]!
+  user(_id: String!): User!
+  walletspage(listWalletInput: ListInput!): [Wallet!]!
   wallets: [Wallet!]!
   wallet(_id: String!): Wallet!
 }
 
-input ListWalletInput {
+input ListInput {
   """Limit pagination"""
   limit: Float!
 
@@ -31,9 +86,82 @@ input ListWalletInput {
 }
 
 type Mutation {
+  createUser(data: CreateUserInput!): User!
+  updateUser(data: UpdateUserInput!): User!
+  removeUser(_id: String!): User!
   createWallet(data: CreateWalletInput!): Wallet!
   updateWallet(data: UpdateWalletInput!): Wallet!
   removeWallet(_id: String!): Wallet!
+}
+
+input CreateUserInput {
+  """User name"""
+  name: String!
+
+  """User email"""
+  email: String!
+
+  """User password"""
+  password: String!
+
+  """User latitude"""
+  latitude: Float
+
+  """User longitude"""
+  longitude: Float
+
+  """User coins"""
+  coins: [CreateCoinInput!]
+
+  """User birth date"""
+  birth_date: DateTime
+
+  """User date register"""
+  date_register: DateTime
+}
+
+input CreateCoinInput {
+  """Coin idwallet"""
+  idwallet: String!
+
+  """Coin notes"""
+  notes: String
+
+  """Coin public_address"""
+  public_address: String!
+
+  """Coin active"""
+  active: Boolean
+
+  """Coin date register"""
+  date_register: DateTime
+}
+
+input UpdateUserInput {
+  """User name"""
+  name: String
+
+  """User email"""
+  email: String
+
+  """User password"""
+  password: String
+
+  """User latitude"""
+  latitude: Float
+
+  """User longitude"""
+  longitude: Float
+
+  """User coins"""
+  coins: [CreateCoinInput!]
+
+  """User birth date"""
+  birth_date: DateTime
+
+  """User date register"""
+  date_register: DateTime
+  _id: String!
 }
 
 input CreateWalletInput {
@@ -46,11 +174,6 @@ input CreateWalletInput {
   """Wallet date register"""
   date_register: DateTime
 }
-
-"""
-A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
-"""
-scalar DateTime
 
 input UpdateWalletInput {
   """Wallet name"""
