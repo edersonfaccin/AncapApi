@@ -20,9 +20,11 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "create:module-graph": "nest g module order && nest g controller order && nest g provider order/order.service && nest g class order/schemas/order.schema && nest g r order && touch src/order/order.input.ts && touch src/order/order.providers.ts",
-    "create:module": "nest g module coin && nest g controller coin && nest g provider coin/coin.service && nest g class coin/schemas/coin.schema"
+    "create:module": "nest g module coin && nest g controller coin && nest g provider coin/coin.service && nest g class coin/schemas/coin.schema",
+    "rundocker": "docker compose up -d"
   },
   "dependencies": {
+    "@nestjs/apollo": "^10.1.4",
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/graphql": "^10.1.5",
