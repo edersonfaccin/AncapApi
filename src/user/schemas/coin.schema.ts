@@ -5,9 +5,7 @@ export type CoinDocument = Coin & Document;
 
 @Schema()
 export class Coin {
-    @Prop({ type: SchemaTypes.ObjectId, ref: 'User' })
-    iduser: Types.ObjectId;
-
+    
     @Prop({ type: SchemaTypes.ObjectId, ref: 'Wallet' })
     idwallet: Types.ObjectId;
 

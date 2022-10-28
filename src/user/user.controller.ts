@@ -1,30 +1,30 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
-import { CoinService } from './coin.service';
-import { Coin } from './schemas/coin.schema';
+import { UserService } from './user.service';
+import { User } from './schemas/user.schema';
 
-@Controller('coin')
-export class CoinController {
+@Controller('user')
+export class UserController {
 
-    constructor(private service: CoinService){
+    constructor(private service: UserService){
     }
 
     @Get()
-    async getAll() : Promise<Coin[]>{
+    async getAll() : Promise<User[]>{
         return this.service.getAll()
     }
 
     @Get(':id')
-    async getById(@Param('id') id: string) : Promise<Coin>{
+    async getById(@Param('id') id: string) : Promise<User>{
         return this.service.getById(id)
     }
 
     @Post()
-    async create(@Body() data: Coin): Promise<Coin> {
+    async create(@Body() data: User): Promise<User> {
         return this.service.create(data)
     }
 
     @Patch(':id')
-    async update(@Param('id') id: string, @Body() data: Coin): Promise<Coin> {
+    async update(@Param('id') id: string, @Body() data: User): Promise<User> {
         return this.service.update(id, data)
     }
 
