@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose'
 import { CreateWalletInput } from './dto/create-wallet.input';
-import { ListWalletInput } from './dto/list-wallet.input';
+import { ListWalletInput } from '../common/dto/list-wallet.input';
 import { UpdateWalletInput } from './dto/update-wallet.input';
 import { Wallet } from './schemas/wallet.schema';
 

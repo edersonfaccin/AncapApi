@@ -1,6 +1,6 @@
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { CreateWalletInput } from './dto/create-wallet.input';
-import { ListWalletInput } from './dto/list-wallet.input';
+import { ListWalletInput } from '../common/dto/list-wallet.input';
 import { UpdateWalletInput } from './dto/update-wallet.input';
 import { Wallet } from './schemas/wallet.schema';
 import { WalletService } from './wallet.service';
