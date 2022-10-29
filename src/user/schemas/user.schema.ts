@@ -12,15 +12,15 @@ export class User {
     @Field(() => String)
     _id: MongooseSchema.Types.ObjectId;
 
-    @Prop({ required: true })
+    @Prop({ required: true, default: '' })
     @Field(() => String, { description: 'User name' })
     name: string;
 
-    @Prop({ required: true })
+    @Prop({ required: true, default: '' })
     @Field(() => String, { description: 'User email' })
     email: string;
 
-    @Prop({ required: true })
+    @Prop({ required: true, default: '' })
     @Field(() => String, { description: 'User password' })
     password: string;
 

@@ -14,15 +14,15 @@ export class Supplier {
     @Field(() => String)
     _id: MongooseSchema.Types.ObjectId;
 
-    @Prop({ required: true })
+    @Prop({ required: true, default: '' })
     @Field(() => String, { description: 'Supplier name' })
     name: string;
 
-    @Prop({ required: true })
+    @Prop({ required: true, default: '' })
     @Field(() => String, { description: 'Supplier email' })
     email: string;
 
-    @Prop({ required: true })
+    @Prop({ required: true, default: '' })
     @Field(() => String, { description: 'Supplier address' })
     address: string;
 

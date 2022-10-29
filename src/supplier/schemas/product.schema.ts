@@ -11,11 +11,11 @@ export class Product {
     @Field(() => String)
     _id: MongooseSchema.Types.ObjectId;
 
-    @Prop({ required: true })
+    @Prop({ required: true, default: '' })
     @Field(() => String, { description: 'Product name' })
     name: string;
 
-    @Prop({ required: false })
+    @Prop({ required: false, default: '' })
     @Field(() => String, { description: 'Product notes' })
     notes: string;
 
@@ -23,7 +23,7 @@ export class Product {
     @Field(() => Number, { description: 'Product value' })
     value: number;
 
-    @Prop({ required: false })
+    @Prop({ required: false, default: [] })
     @Field(() => [String], { description: 'Product images' })
     images: Types.Array<string>
 

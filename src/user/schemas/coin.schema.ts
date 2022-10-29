@@ -15,11 +15,11 @@ export class Coin {
     @Field(() => String, { description: 'Coin wallet id' })
     idwallet: Types.ObjectId;
 
-    @Prop({ required: false })
+    @Prop({ required: false, default: '' })
     @Field(() => String, { description: 'Coin notes' })
     notes: string;
 
-    @Prop({ required: true })
+    @Prop({ required: true, default: '' })
     @Field(() => String, { description: 'Coin public address' })
     public_address: string;
 

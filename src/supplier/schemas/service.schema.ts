@@ -11,11 +11,11 @@ export class Service {
     @Field(() => String)
     _id: MongooseSchema.Types.ObjectId;
 
-    @Prop({ required: true })
+    @Prop({ required: true, default: '' })
     @Field(() => String, { description: 'Service name' })
     name: string;
 
-    @Prop({ required: false })
+    @Prop({ required: false, default: '' })
     @Field(() => String, { description: 'Service notes' })
     notes: string;
 
