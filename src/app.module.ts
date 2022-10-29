@@ -4,7 +4,6 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { SupplierModule } from './supplier/supplier.module';
-import { OrderModule } from './order/order.module';
 import { WalletModule } from './wallet/wallet.module';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
@@ -21,7 +20,6 @@ require('dotenv').config()
     }),
     UserModule,
     SupplierModule,
-    //OrderModule,
     WalletModule
   ],
   controllers: [
